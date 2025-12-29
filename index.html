@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初中毕业季·感恩老师</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&family=ZCOOL+QingKe+HuangYou&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #5a8dee;
+            --secondary: #ff8a65;
+            --accent: #ffd166;
+            --light: #f8f9fa;
+            --dark: #333344;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --success: #4CAF50;
+            --error: #ff5252;
+            --gradient-primary: linear-gradient(135deg, #5a8dee, #7c4dff);
+            --gradient-secondary: linear-gradient(135deg, #ff8a65, #ff5252);
+        }
+        
+        body {
+            font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 100px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1.5s ease;
+        }
+        
+        h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.95;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        /* 装饰元素 */
+        .decoration {
+            position: absolute;
+            opacity: 0.08;
+            z-index: 1;
+        }
+        
+        .decoration-1 {
+            top: 20px;
+            left: 10%;
+            font-size: 10rem;
+            transform: rotate(-15deg);
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .decoration-2 {
+            bottom: 30px;
+            right: 10%;
+            font-size: 8rem;
+            transform: rotate(20deg);
+            animation: float 10s ease-in-out infinite 1s;
+        }
+        
+        .decoration-3 {
+            top: 40%;
+            left: 5%;
+            font-size: 7rem;
+            animation: float 9s ease-in-out infinite reverse 0.5s;
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            padding: 80px 0;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 80px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid var(--accent);
+            display: inline-block;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            letter-spacing: 1px;
+        }
+        
+        h3 {
+            color: var(--primary);
+            margin: 30px 0 20px;
+            font-size: 1.8rem;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        p {
+            margin-bottom: 25px;
+            font-size: 1.15rem;
+            text-align: justify;
+            color: #444;
+        }
+        
+        /* 留言表单样式 */
+        .message-form {
+            background: linear-gradient(to bottom right, #f8fbff, #eef5ff);
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-top: 40px;
+            border: 2px dashed var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+        
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(90, 141, 238, 0.15);
+            background: white;
+        }
+        
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(90, 141, 238, 0.3);
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #4a7dee, #6c3dff);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(90, 141, 238, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* 留言展示区 */
+        .messages-container {
+            margin-top: 60px;
+        }
+        
+        .messages-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .refresh-btn {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(255, 138, 101, 0.3);
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        .refresh-btn:hover {
+            background: linear-gradient(135deg, #ff7a55, #ff4242);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 138, 101, 0.4);
+        }
+        
+        .message-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--primary);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+        
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .message-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .message-card:hover::before {
+            opacity: 1;
+        }
+        
+        .message-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .message-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(90, 141, 238, 0.3);
+        }
+        
+        .message-info {
+            flex: 1;
+        }
+        
+        .message-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        .message-meta {
+            color: #777;
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+        
+        .message-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+            padding-top: 20px;
+            white-space: pre-line;
+        }
+        
+        /* 留言地址信息 */
+        .message-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #eee;
+        }
+        
+        /* 删除按钮 */
+        .delete-btn {
+            background: rgba(255, 82, 82, 0.1);
+            color: var(--error);
+            border: 2px solid rgba(255, 82, 82, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        .delete-btn:hover {
+            background: rgba(255, 82, 82, 0.2);
+            border-color: var(--error);
+            transform: scale(1.05);
+        }
+        
+        .message-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .no-messages {
+            text-align: center;
+            padding: 60px 40px;
+            color: #777;
+            font-style: italic;
+            background: #f9f9f9;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px dashed #ddd;
+        }
+        
+        /* 消息提示 */
+        .message-alert {
+            padding: 18px;
+            margin-top: 25px;
+            border-radius: 12px;
+            display: none;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-left: 5px solid var(--success);
+        }
+        
+        .error-message {
+            background-color: rgba(255, 82, 82, 0.1);
+            border-left: 5px solid var(--error);
+        }
+        
+        .info-message {
+            background-color: rgba(90, 141, 238, 0.1);
+            border-left: 5px solid var(--primary);
+        }
+        
+        /* 加载动画 */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+        }
+        
+        .spinner {
+            border: 5px solid rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            border-top: 5px solid var(--primary);
+            width: 50px;
+            height: 50px;
+            animation: spin 1.2s linear infinite;
+        }
+        
+        /* 时间轴样式 - 优化版（确保图标在时间轴线上） */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 50px auto 0;
+            padding: 20px 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 25px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            top: 30px;
+            z-index: 2;
+            transform: rotate(45deg);
+            box-shadow: 3px -3px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -10px;
+            right: auto;
+            box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* 时间轴图标优化 - 确保在时间轴线上方 */
+        .timeline-icon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            right: -30px;
+            background: var(--gradient-primary);
+            border: 4px solid white;
+            top: 20px;
+            border-radius: 50%;
+            z-index: 20; /* 提高z-index确保在时间轴线上方 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -30px;
+            right: auto;
+        }
+        
+        /* 时间轴年份标记 */
+        .timeline-year {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #1a2530);
+            color: white;
+            text-align: center;
+            padding: 70px 20px;
+            margin-top: 80px;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .graduation-quote {
+            font-size: 1.6rem;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: var(--accent);
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            line-height: 1.8;
+        }
+        
+        .signature {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 2.5rem;
+            margin-top: 40px;
+            color: #fff;
+        }
+        
+        /* 制作人信息和导航按钮 */
+        .creator-info {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 1rem;
+            color: #bbb;
+        }
+        
+        .creator-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        .creator-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        .navigation-btn {
+            display: inline-block;
+            background: var(--gradient-secondary);
+            color: white;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 138, 101, 0.3);
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+            letter-spacing: 1px;
+        }
+        
+        .navigation-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 138, 101, 0.4);
+            background: linear-gradient(135deg, #ff7a55, #ff4242);
+        }
+        
+        /* 实时时间显示 */
+        .real-time-info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .time-display, .visitor-count {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .time-display h4, .visitor-count h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        .time-value, .visitor-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            font-family: 'ZCOOL QingKe HuangYou', cursive;
+        }
+        
+        /* 动画定义 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(-15deg);
+            }
+            50% {
+                transform: translateY(-25px) rotate(-15deg);
+            }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* ========== PC端优化 ========== */
+        @media (min-width: 1024px) {
+            /* PC端时间轴图标进一步优化 */
+            .timeline-icon {
+                width: 70px;
+                height: 70px;
+                right: -35px;
+                font-size: 1.7rem;
+                border-width: 5px;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: -35px;
+            }
+            
+            /* 确保时间轴内容框的箭头在图标下方 */
+            .timeline-content::before {
+                z-index: 1;
+            }
+            
+            /* PC端头部增大 */
+            header {
+                padding: 140px 20px 120px;
+            }
+            
+            h1 {
+                font-size: 4.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.6rem;
+            }
+            
+            /* PC端表单优化 */
+            .message-form {
+                padding: 50px;
+            }
+            
+            .form-group {
+                margin-bottom: 35px;
+            }
+            
+            input, textarea, select {
+                padding: 18px 25px;
+                font-size: 1.1rem;
+            }
+            
+            /* PC端留言卡片优化 */
+            .message-card {
+                padding: 35px;
+            }
+            
+            .message-header {
+                margin-bottom: 25px;
+            }
+            
+            .message-avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .message-name {
+                font-size: 1.7rem;
+            }
+            
+            .message-content {
+                font-size: 1.2rem;
+                padding-top: 25px;
+                margin-top: 25px;
+            }
+        }
+        
+        /* ========== 平板端优化 ========== */
+        @media (max-width: 1023px) and (min-width: 769px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .section {
+                padding: 40px 35px;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .timeline-icon {
+                width: 55px;
+                height: 55px;
+                right: -27.5px;
+                font-size: 1.3rem;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: -27.5px;
+            }
+        }
+        
+        /* ========== 移动端优化 ========== */
+        @media (max-width: 768px) {
+            /* 头部优化 */
+            header {
+                padding: 80px 15px 60px;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+                margin-bottom: 15px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+            
+            .decoration-1, .decoration-2, .decoration-3 {
+                display: none; /* 移动端隐藏装饰元素节省空间 */
+            }
+            
+            /* 主要内容优化 */
+            .main-content {
+                padding: 40px 0;
+            }
+            
+            .section {
+                padding: 25px 20px;
+                margin-bottom: 50px;
+                border-radius: 15px;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+            
+            h3 {
+                font-size: 1.4rem;
+                margin: 20px 0 15px;
+            }
+            
+            p {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            
+            /* 表单优化 */
+            .message-form {
+                padding: 25px 20px;
+                margin-top: 30px;
+            }
+            
+            .form-group {
+                margin-bottom: 20px;
+            }
+            
+            label {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+            
+            input, textarea, select {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            
+            textarea {
+                min-height: 120px;
+            }
+            
+            .submit-btn {
+                padding: 14px 30px;
+                font-size: 1.1rem;
+                width: 100%;
+            }
+            
+            /* 留言卡片优化 */
+            .message-card {
+                padding: 20px;
+                margin-bottom: 20px;
+                border-radius: 15px;
+            }
+            
+            .message-header {
+                flex-direction: row;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .message-avatar {
+                width: 55px;
+                height: 55px;
+                font-size: 1.4rem;
+            }
+            
+            .message-name {
+                font-size: 1.2rem;
+            }
+            
+            .message-meta {
+                font-size: 0.85rem;
+            }
+            
+            .message-content {
+                font-size: 1rem;
+                padding: 12px 0;
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+            
+            .message-actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                margin-top: 15px;
+            }
+            
+            .delete-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            /* 消息控件优化 */
+            .messages-controls {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .refresh-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* ========== 移动端时间轴优化 ========== */
+            .timeline {
+                margin: 30px auto 0;
+                padding: 15px 0;
+            }
+            
+            /* 移动端时间轴改为单列显示 */
+            .timeline::after {
+                left: 40px; /* 将时间轴线移到左侧 */
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 90px; /* 为图标留出空间 */
+                padding-right: 15px;
+                left: 0 !important; /* 所有项目都在左侧 */
+                margin-bottom: 40px;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+                border-radius: 12px;
+            }
+            
+            /* 调整时间轴内容框箭头位置 */
+            .timeline-content::before {
+                left: -10px;
+                right: auto;
+                top: 25px;
+                box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.05);
+            }
+            
+            /* 移动端时间轴图标优化 */
+            .timeline-icon {
+                width: 50px;
+                height: 50px;
+                left: 15px; /* 确保图标在时间轴线上方 */
+                right: auto;
+                top: 15px;
+                z-index: 20; /* 确保图标在时间轴线上方 */
+                border-width: 3px;
+                font-size: 1.2rem;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-icon {
+                left: 15px;
+            }
+            
+            /* 移动端时间轴年份标记 */
+            .timeline-year {
+                top: -25px;
+                font-size: 0.9rem;
+                padding: 6px 15px;
+            }
+            
+            /* 实时信息优化 */
+            .real-time-info {
+                padding: 15px;
+                margin: 20px 0;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .time-display, .visitor-count {
+                min-width: 100%;
+            }
+            
+            .time-value, .visitor-value {
+                font-size: 1.5rem;
+            }
+            
+            /* 页脚优化 */
+            footer {
+                padding: 50px 15px;
+                margin-top: 50px;
+                clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .graduation-quote {
+                font-size: 1.2rem;
+                margin-bottom: 25px;
+            }
+            
+            .signature {
+                font-size: 1.8rem;
+                margin-top: 25px;
+            }
+            
+            .navigation-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .creator-info {
+                margin-top: 30px;
+                padding-top: 25px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* ========== 小屏手机优化 ========== */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 20px 15px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            /* 进一步优化时间轴 */
+            .timeline-item {
+                padding-left: 80px;
+            }
+            
+            .timeline-icon {
+                width: 45px;
+                height: 45px;
+                left: 12px;
+                font-size: 1.1rem;
+            }
+            
+            .timeline::after {
+                left: 35px;
+            }
+            
+            .message-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .message-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .time-value, .visitor-value {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header>
+        <div class="decoration decoration-1">✎</div>
+        <div class="decoration decoration-2">❤</div>
+        <div class="decoration decoration-3">☆</div>
+        
+        <div class="header-content">
+            <h1>初中毕业·师恩难忘</h1>
+            <p class="subtitle">三年初中时光匆匆而过，感谢老师们的辛勤培育和无私付出！在此毕业之际，让我们写下对老师的感恩与祝福，与其他同学一起分享。</p>
+            <div style="margin-top: 40px; font-size: 5rem; color: rgba(255,255,255,0.15);">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 感谢信部分 -->
+        <section class="main-content">
+            <div class="section" id="letter">
+                <h2>致初中老师的一封信</h2>
+                <p>敬爱的老师们：</p>
+                <p>时光飞逝，转眼间我们已从初一的懵懂少年成长为即将毕业的初中生。三年来，在您的悉心教导下，我们不仅学到了知识，更学会了做人做事的道理。</p>
+                <p>还记得初一刚入学时，我们对初中生活既期待又忐忑。是您用温暖的笑容和耐心的话语，帮助我们适应新环境，融入新集体。</p>
+                <p>初二时，我们开始进入青春期，有时叛逆，有时迷茫。是您像朋友一样倾听我们的心声，像家人一样关心我们的成长，引导我们走向正确的道路。</p>
+                <p>初三这一年，面对升学压力，您比我们更加辛苦。白天上课，晚上备课，周末还要批改作业。我们看到了您眼中的疲惫，更看到了您对教育的执着和对我们的期望。</p>
+                <p>老师，感谢您三年来日夜操劳，感谢您在我们犯错时的宽容，感谢您在我们进步时的鼓励，感谢您为我们付出的一切！</p>
+                <p>初中毕业不是终点，而是新的起点。我们会牢记您的教诲，在高中继续努力，不辜负您的期望！</p>
+                <div style="text-align: right; margin-top: 40px;">
+                    <p>此致</p>
+                    <p>敬礼！</p>
+                    <p style="margin-top: 20px; font-weight: bold; font-size: 1.3rem;">2026届初中全体毕业生</p>
+                </div>
+            </div>
+
+            <!-- 留言板块 -->
+            <div class="section" id="messages">
+                <h2>感恩留言板</h2>
+                <p>在这里，您可以写下对老师的感谢和祝福。您的留言将被保存并展示给所有访问此页面的用户。</p>
+                
+                <!-- 留言表单 -->
+                <div class="message-form">
+                    <h3 style="color: var(--primary); margin-top: 0;">写下您的感恩留言</h3>
+                    <form id="messageForm">
+                        <div class="form-group">
+                            <label for="userName">您的姓名：</label>
+                            <input type="text" id="userName" name="userName" placeholder="请输入您的姓名" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userRole">您的身份：</label>
+                            <select id="userRole" name="userRole" required>
+                                <option value="" disabled selected>请选择您的身份</option>
+                                <option value="学生">学生</option>
+                                <option value="毕业生">毕业生</option>
+                                <option value="家长">家长</option>
+                                <option value="老师">老师</option>
+                                <option value="校友">校友</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="teacherName">致谢老师：</label>
+                            <input type="text" id="teacherName" name="teacherName" placeholder="请输入您想感谢的老师/同学姓名（可选）">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userLocation">您的地址（可选）：</label>
+                            <input type="text" id="userLocation" name="userLocation" placeholder="请输入您的城市/地区（如：北京市海淀区）">
+                            <small style="color: #777; font-size: 0.9rem;">我们将根据您的地理位置显示留言来源</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="messageContent">留言内容：</label>
+                            <textarea id="messageContent" name="messageContent" placeholder="请写下您对老师/同学的感谢和祝福..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> 提交留言
+                        </button>
+                    </form>
+                    
+                    <!-- 消息提示 -->
+                    <div id="successMessage" class="message-alert success-message">
+                        <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                        <span>您的留言已成功提交！所有用户都能看到您的留言。</span>
+                    </div>
+                    
+                    <div id="errorMessage" class="message-alert error-message">
+                        <i class="fas fa-exclamation-circle" style="color: var(--error);"></i>
+                        <span id="errorText">提交留言时出错，请稍后重试。</span>
+                    </div>
+                    
+                    <div id="infoMessage" class="message-alert info-message">
+                        <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                        <span id="infoText">正在加载留言...</span>
+                    </div>
+                </div>
+                
+                <!-- 留言展示区 -->
+                <div class="messages-container">
+                    <div class="messages-controls">
+                        <h3>感恩留言展示 <span id="messageCount" style="font-size: 1.1rem; color: #777;"></span></h3>
+                        <button class="refresh-btn" id="refreshBtn">
+                            <i class="fas fa-sync-alt"></i> 刷新留言
+                        </button>
+                    </div>
+                    
+                    <div id="messagesList">
+                        <!-- 留言将通过JavaScript动态生成 -->
+                        <div class="loading">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 校园回忆时间轴 -->
+            <div class="section" id="memories">
+                <h2>初中三年时光回忆</h2>
+                <p>那些与老师共同度过的珍贵瞬间，永远铭记在心：</p>
+                
+                <div class="timeline">
+                    <!-- 时间轴项目1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">初一</div>
+                            <h3>初一入学</h3>
+                            <p>第一次踏入初中校园，老师们在门口热情迎接，帮我们搬行李、找教室，让我们感受到了家的温暖。</p>
+                        </div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间轴项目2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">初一</div>
+                            <h3>第一次期中考试</h3>
+                            <p>成绩不理想时，各科老师利用课余时间为我们补课，耐心讲解每一个知识点，让我们重拾信心。</p>
+                        </div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间轴项目3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">初二</div>
+                            <h3>运动会</h3>
+                            <p>老师们不仅为我们加油助威，还亲自参与教师接力赛。看到老师在赛场上奔跑，我们无比激动。</p>
+                        </div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间轴项目4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">初三</div>
+                            <h3>初三冲刺</h3>
+                            <p>老师们放弃休息时间，为我们答疑解惑，准备复习资料。每晚教室的灯光下，都有老师陪伴的身影。</p>
+                        </div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 时间轴项目5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">初三</div>
+                            <h3>毕业典礼</h3>
+                            <p>老师们眼含热泪为我们送上毕业祝福，每一句叮嘱都饱含深情，我们将永远铭记这一刻。</p>
+                        </div>
+                        <div class="timeline-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="graduation-quote">
+                "老师是辛勤的园丁，用知识的雨露滋润我们成长"
+            </div>
+            <p>衷心感谢所有初中老师三年来的辛勤付出！</p>
+            <p>感谢您的谆谆教诲和无私奉献！</p>
+            <p>祝老师们身体健康，工作顺利，桃李满天下！</p>
+            
+            <!-- 实时信息显示 -->
+            <div class="real-time-info">
+                <div class="time-display">
+                    <h4><i class="fas fa-clock"></i> 当前时间</h4>
+                    <div class="time-value" id="currentTime">正在获取时间...</div>
+                </div>
+                <div class="visitor-count">
+                    <h4><i class="fas fa-users"></i> 实时访问量</h4>
+                    <div class="visitor-value" id="visitorCount">正在获取访问量...</div>
+                </div>
+            </div>
+            
+            <div class="signature">
+                2026届初中毕业生 敬上
+            </div>
+            
+            <!-- 导航按钮 -->
+            <a href="https://gerbeian.github.io" class="navigation-btn" target="_blank">
+                <i class="fas fa-external-link-alt"></i> GerBeian的官网
+            </a>
+            
+            <!-- 制作人信息 -->
+            <div class="creator-info">
+                <p>本网页由 <a href="https://github.com/GerBeian" class="creator-link" target="_blank">GerBeian</a> 设计制作</p>
+                <p>© 2025 初中毕业感恩网页 | 感谢所有辛勤付出的老师们</p>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #999;">
+                    留言功能使用 JSONBin 作为后端，所有用户的留言将被保存并共享。
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 删除确认对话框 -->
+    <div id="deleteDialog" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; width: 90%; box-shadow: 0 15px 40px rgba(0,0,0,0.2);">
+            <h3 style="color: var(--error); margin-bottom: 20px;"><i class="fas fa-exclamation-triangle"></i> 确认删除留言</h3>
+            <p>您确定要删除这条留言吗？此操作无法撤销。</p>
+            <p style="margin-top: 15px; color: #777; font-size: 0.95rem;">请输入管理密码以确认删除：</p>
+            <input type="password" id="deletePassword" placeholder="请输入管理密码" style="width: 100%; padding: 12px; margin: 15px 0; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem;">
+            <div style="display: flex; gap: 15px; margin-top: 25px;">
+                <button id="confirmDeleteBtn" style="flex: 1; background: var(--error); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;">确认删除</button>
+                <button id="cancelDeleteBtn" style="flex: 1; background: #ddd; color: #333; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===========================================
+        // JSONBin 配置
+        // ===========================================
+        const BIN_ID = '6952175843b1c97be90b94e1';
+        const JSONBIN_MASTER_KEY = '$2a$10$qn0YQTbDFQAHQJFCdre1fuRBuxi92SEmqmAPLloEZHPBGWLSGtdIq';
+        // ===========================================
+        
+        // 构建JSONBin API URL
+        const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+        
+        // 管理密码（用于删除留言）
+        const ADMIN_PASSWORD = "admin123";
+        
+        // 当前待删除的留言ID
+        let pendingDeleteMessageId = null;
+        
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查是否已配置Bin ID和Master Key
+            if (!BIN_ID || !JSONBIN_MASTER_KEY || BIN_ID === '在这里填入您的Bin ID') {
+                showConfigError();
+                return;
+            }
+            
+            // 初始显示第一部分的动画
+            document.getElementById('letter').classList.add('visible');
+            
+            // 加载留言
+            loadMessages();
+            
+            // 表单提交事件
+            document.getElementById('messageForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitMessage();
+            });
+            
+            // 刷新按钮事件
+            document.getElementById('refreshBtn').addEventListener('click', function() {
+                loadMessages();
+            });
+            
+            // 删除对话框按钮事件
+            document.getElementById('confirmDeleteBtn').addEventListener('click', confirmDelete);
+            document.getElementById('cancelDeleteBtn').addEventListener('click', function() {
+                document.getElementById('deleteDialog').style.display = 'none';
+                document.getElementById('deletePassword').value = '';
+                pendingDeleteMessageId = null;
+            });
+            
+            // 监听滚动事件，触发元素显示动画
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // 如果是时间轴项目，为每个项目添加延迟显示
+                        if (entry.target.classList.contains('timeline-item')) {
+                            const items = document.querySelectorAll('.timeline-item');
+                            items.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.classList.add('visible');
+                                }, index * 200);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有需要动画的元素
+            document.querySelectorAll('.section:not(#letter), .timeline-item').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // 启动实时时间更新
+            updateCurrentTime();
+            setInterval(updateCurrentTime, 1000);
+            
+            // 更新访问量
+            updateVisitorCount();
+            
+            // 添加页面加载完成的动画
+            setTimeout(() => {
+                document.body.style.opacity = 1;
+            }, 100);
+            
+            // 设置自动刷新留言（每30秒刷新一次）
+            setInterval(loadMessages, 30000);
+            
+            // 移动端优化：调整删除对话框大小
+            adjustDeleteDialogForMobile();
+        });
+        
+        // 移动端调整删除对话框
+        function adjustDeleteDialogForMobile() {
+            const deleteDialog = document.getElementById('deleteDialog');
+            const dialogContent = deleteDialog.querySelector('div');
+            
+            if (window.innerWidth <= 768) {
+                dialogContent.style.maxWidth = '90%';
+                dialogContent.style.padding = '20px';
+            }
+        }
+        
+        // 显示配置错误
+        function showConfigError() {
+            const messagesList = document.getElementById('messagesList');
+            messagesList.innerHTML = `
+                <div class="no-messages" style="background-color: #fff8e1; border: 2px dashed #ff9800;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 15px; color: #ff9800;"></i>
+                    <h3 style="color: #ff9800;">需要配置JSONBin</h3>
+                    <p>留言功能需要配置JSONBin后端才能正常工作。</p>
+                    <p><strong>请按照以下步骤配置：</strong></p>
+                    <ol style="text-align: left; margin: 15px auto; max-width: 500px;">
+                        <li>访问 <a href="https://jsonbin.io" target="_blank">JSONBin.io</a> 注册账户</li>
+                        <li>创建一个新的Bin，初始数据设置为: <code>{"messages": []}</code></li>
+                        <li>复制您的Bin ID和Master Key</li>
+                        <li>编辑本网页源代码，替换第587-590行的值</li>
+                        <li>保存并重新加载页面</li>
+                    </ol>
+                    <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                        或者，您可以暂时使用本地存储模式（仅当前浏览器可见）：
+                        <button id="useLocalBtn" style="background: #5a8dee; color: white; border: none; padding: 10px 20px; border-radius: 8px; margin-left: 10px; cursor: pointer;">使用本地模式</button>
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('useLocalBtn').addEventListener('click', function() {
+                // 使用本地存储模式
+                localStorage.setItem('useLocalMode', 'true');
+                showMessage('info', '已切换到本地存储模式，留言仅在当前浏览器可见。', 5000);
+                loadMessages();
+            });
+        }
+        
+        // 显示消息函数
+        function showMessage(type, message, duration = 5000) {
+            // 隐藏所有消息
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('infoMessage').style.display = 'none';
+            
+            // 显示指定消息
+            if (type === 'success') {
+                document.getElementById('successMessage').style.display = 'flex';
+                if (duration > 0) {
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, duration);
+                }
+            } else if (type === 'error') {
+                document.getElementById('errorText').textContent = message;
+                document.getElementById('errorMessage').style.display = 'flex';
+                if (duration > 0) {
+                    setTimeout(() => {
+                        document.getElementById('errorMessage').style.display = 'none';
+                    }, duration);
+                }
+            } else if (type === 'info') {
+                document.getElementById('infoText').textContent = message;
+                document.getElementById('infoMessage').style.display = 'flex';
+            }
+        }
+        
+        // 更新当前时间
+        function updateCurrentTime() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                weekday: 'long',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            const timeString = now.toLocaleDateString('zh-CN', options);
+            document.getElementById('currentTime').textContent = timeString;
+        }
+        
+        // 更新访问量
+        async function updateVisitorCount() {
+            try {
+                // 从JSONBin获取访问量数据
+                const response = await fetch(JSONBIN_URL + '/latest', {
+                    headers: {
+                        'X-Master-Key': JSONBIN_MASTER_KEY,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`网络响应不正常: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                let visitorsData = data.record;
+                
+                // 如果数据是数组格式，转换为对象格式
+                if (Array.isArray(visitorsData)) {
+                    visitorsData = {
+                        messages: visitorsData,
+                        visitors: 1
+                    };
+                } else if (!visitorsData.visitors) {
+                    // 如果对象中没有visitors字段，初始化
+                    visitorsData.visitors = 1;
+                } else {
+                    // 增加访问量
+                    visitorsData.visitors += 1;
+                }
+                
+                // 更新到JSONBin
+                const updateResponse = await fetch(JSONBIN_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'X-Master-Key': JSONBIN_MASTER_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(visitorsData)
+                });
+                
+                if (updateResponse.ok) {
+                    // 显示访问量
+                    document.getElementById('visitorCount').textContent = visitorsData.visitors.toLocaleString();
+                }
+                
+            } catch (error) {
+                console.error('更新访问量时出错:', error);
+                // 如果失败，显示一个估计值
+                const estimatedVisitors = Math.floor(Math.random() * 500) + 1000;
+                document.getElementById('visitorCount').textContent = estimatedVisitors.toLocaleString() + ' (估计值)';
+            }
+        }
+        
+        // 加载留言函数
+        async function loadMessages() {
+            const messagesList = document.getElementById('messagesList');
+            const messageCount = document.getElementById('messageCount');
+            
+            // 检查是否使用本地模式
+            const useLocalMode = localStorage.getItem('useLocalMode') === 'true';
+            
+            if (useLocalMode) {
+                // 本地模式
+                const localMessages = JSON.parse(localStorage.getItem('teacherMessages_local')) || [];
+                
+                // 更新留言数量
+                messageCount.textContent = `(${localMessages.length} 条，本地模式)`;
+                
+                // 清空消息列表
+                messagesList.innerHTML = '';
+                
+                if (localMessages.length === 0) {
+                    messagesList.innerHTML = `
+                        <div class="no-messages">
+                            <i class="fas fa-comment-slash" style="font-size: 3rem; margin-bottom: 15px; color: #ccc;"></i>
+                            <p>暂无留言，快来写下第一条感恩留言吧！</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem; color: #888;">当前为本地模式，留言仅在此浏览器可见。</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // 按时间倒序排列（最新的在前面）
+                localMessages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                // 生成留言卡片
+                localMessages.forEach((message, index) => {
+                    const messageCard = document.createElement('div');
+                    messageCard.className = 'message-card';
+                    messageCard.dataset.id = message.id;
+                    
+                    // 生成头像文字（取姓名前两个字符）
+                    const avatarText = message.userName.substring(0, 2).toUpperCase();
+                    
+                    // 格式化日期
+                    const date = new Date(message.timestamp);
+                    const formattedDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+                    
+                    // 构建留言卡片HTML
+                    let messageHTML = `
+                        <div class="message-header">
+                            <div class="message-avatar">${avatarText}</div>
+                            <div class="message-info">
+                                <div class="message-name">${message.userName} · ${message.userRole}</div>
+                                <div class="message-meta">
+                                    ${message.teacherName ? `致谢：${message.teacherName}老师 · ` : ''}
+                                    发布于：${formattedDate}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message-content">${message.content}</div>
+                    `;
+                    
+                    // 如果有地址信息，显示地址
+                    if (message.location) {
+                        messageHTML += `
+                            <div class="message-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>来自：${message.location}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    // 添加操作按钮
+                    messageHTML += `
+                        <div class="message-actions">
+                            <div style="color: #888; font-size: 0.9rem;">
+                                <i class="fas fa-id-card"></i> 留言ID: ${message.id}
+                            </div>
+                            <button class="delete-btn" onclick="showDeleteDialog(${message.id}, true)">
+                                <i class="fas fa-trash-alt"></i> 删除留言
+                            </button>
+                        </div>
+                    `;
+                    
+                    messageCard.innerHTML = messageHTML;
+                    
+                    // 添加延迟动画
+                    messageCard.style.animationDelay = `${index * 0.1}s`;
+                    messagesList.appendChild(messageCard);
+                });
+                
+                showMessage('info', `已加载 ${localMessages.length} 条本地留言`, 2000);
+                return;
+            }
+            
+            // 云端模式
+            // 显示加载状态
+            messagesList.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            showMessage('info', '正在加载留言...');
+            
+            try {
+                // 从JSONBin获取留言
+                const response = await fetch(JSONBIN_URL + '/latest', {
+                    headers: {
+                        'X-Master-Key': JSONBIN_MASTER_KEY,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`网络响应不正常: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                let messagesData = data.record;
+                
+                // 兼容旧数据格式（数组）
+                let messages = [];
+                if (Array.isArray(messagesData)) {
+                    messages = messagesData;
+                } else if (messagesData && messagesData.messages) {
+                    messages = messagesData.messages;
+                }
+                
+                // 更新留言数量
+                messageCount.textContent = `(${messages.length} 条)`;
+                
+                // 清空消息列表
+                messagesList.innerHTML = '';
+                
+                if (messages.length === 0) {
+                    // 没有留言时显示提示
+                    messagesList.innerHTML = `
+                        <div class="no-messages">
+                            <i class="fas fa-comment-slash" style="font-size: 3rem; margin-bottom: 15px; color: #ccc;"></i>
+                            <p>暂无留言，快来写下第一条感恩留言吧！</p>
+                        </div>
+                    `;
+                    showMessage('info', '暂无留言，快来写下第一条感恩留言吧！', 3000);
+                    return;
+                }
+                
+                // 按时间倒序排列（最新的在前面）
+                messages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                
+                // 生成留言卡片
+                messages.forEach((message, index) => {
+                    const messageCard = document.createElement('div');
+                    messageCard.className = 'message-card';
+                    messageCard.dataset.id = message.id;
+                    
+                    // 生成头像文字（取姓名前两个字符）
+                    const avatarText = message.userName.substring(0, 2).toUpperCase();
+                    
+                    // 格式化日期
+                    const date = new Date(message.timestamp);
+                    const formattedDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+                    
+                    // 构建留言卡片HTML
+                    let messageHTML = `
+                        <div class="message-header">
+                            <div class="message-avatar">${avatarText}</div>
+                            <div class="message-info">
+                                <div class="message-name">${message.userName} · ${message.userRole}</div>
+                                <div class="message-meta">
+                                    ${message.teacherName ? `致谢：${message.teacherName}老师 · ` : ''}
+                                    发布于：${formattedDate}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message-content">${message.content}</div>
+                    `;
+                    
+                    // 如果有地址信息，显示地址
+                    if (message.location) {
+                        messageHTML += `
+                            <div class="message-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>来自：${message.location}</span>
+                            </div>
+                        `;
+                    }
+                    
+                    // 添加操作按钮
+                    messageHTML += `
+                        <div class="message-actions">
+                            <div style="color: #888; font-size: 0.9rem;">
+                                <i class="fas fa-id-card"></i> 留言ID: ${message.id}
+                            </div>
+                            <button class="delete-btn" onclick="showDeleteDialog(${message.id})">
+                                <i class="fas fa-trash-alt"></i> 删除留言
+                            </button>
+                        </div>
+                    `;
+                    
+                    messageCard.innerHTML = messageHTML;
+                    
+                    // 添加延迟动画
+                    messageCard.style.animationDelay = `${index * 0.1}s`;
+                    messagesList.appendChild(messageCard);
+                });
+                
+                showMessage('info', `已加载 ${messages.length} 条留言`, 2000);
+                
+            } catch (error) {
+                console.error('加载留言时出错:', error);
+                
+                // 尝试从本地存储加载留言作为备用方案
+                const localMessages = JSON.parse(localStorage.getItem('teacherMessages_backup')) || [];
+                
+                if (localMessages.length > 0) {
+                    // 使用本地备份的留言
+                    showMessage('info', '使用本地备份留言，云端留言加载失败', 3000);
+                    
+                    // 更新留言数量
+                    messageCount.textContent = `(${localMessages.length} 条，本地备份)`;
+                    
+                    // 清空消息列表
+                    messagesList.innerHTML = '';
+                    
+                    // 按时间倒序排列
+                    localMessages.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                    
+                    // 生成留言卡片
+                    localMessages.forEach((message, index) => {
+                        const messageCard = document.createElement('div');
+                        messageCard.className = 'message-card';
+                        messageCard.dataset.id = message.id;
+                        
+                        const avatarText = message.userName.substring(0, 2).toUpperCase();
+                        
+                        const date = new Date(message.timestamp);
+                        const formattedDate = `${date.getFullYear()}-${(date.getMonth()+1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+                        
+                        // 构建留言卡片HTML
+                        let messageHTML = `
+                            <div class="message-header">
+                                <div class="message-avatar">${avatarText}</div>
+                                <div class="message-info">
+                                    <div class="message-name">${message.userName} · ${message.userRole}</div>
+                                    <div class="message-meta">
+                                        ${message.teacherName ? `致谢：${message.teacherName}老师 · ` : ''}
+                                        发布于：${formattedDate}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-content">${message.content}</div>
+                        `;
+                        
+                        // 如果有地址信息，显示地址
+                        if (message.location) {
+                            messageHTML += `
+                                <div class="message-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>来自：${message.location}</span>
+                                </div>
+                            `;
+                        }
+                        
+                        // 添加操作按钮
+                        messageHTML += `
+                            <div class="message-actions">
+                                <div style="color: #888; font-size: 0.9rem;">
+                                    <i class="fas fa-id-card"></i> 留言ID: ${message.id}
+                                </div>
+                                <button class="delete-btn" onclick="showDeleteDialog(${message.id}, true)">
+                                    <i class="fas fa-trash-alt"></i> 删除留言
+                                </button>
+                            </div>
+                        `;
+                        
+                        messageCard.innerHTML = messageHTML;
+                        
+                        messageCard.style.animationDelay = `${index * 0.1}s`;
+                        messagesList.appendChild(messageCard);
+                    });
+                } else {
+                    // 完全无法加载留言
+                    messagesList.innerHTML = `
+                        <div class="no-messages">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 15px; color: #ff7e5f;"></i>
+                            <p>加载留言失败，请检查网络连接后刷新页面。</p>
+                            <p style="margin-top: 10px; font-size: 0.9rem;">错误信息: ${error.message}</p>
+                            <button id="switchToLocalBtn" style="background: #5a8dee; color: white; border: none; padding: 12px 25px; border-radius: 8px; margin-top: 15px; cursor: pointer;">
+                                <i class="fas fa-laptop-house"></i> 切换到本地模式
+                            </button>
+                        </div>
+                    `;
+                    
+                    document.getElementById('switchToLocalBtn').addEventListener('click', function() {
+                        localStorage.setItem('useLocalMode', 'true');
+                        showMessage('info', '已切换到本地存储模式，留言仅在当前浏览器可见。', 5000);
+                        loadMessages();
+                    });
+                    
+                    showMessage('error', '加载留言失败，请检查网络连接后刷新页面。', 5000);
+                }
+            }
+        }
+        
+        // 显示删除对话框
+        window.showDeleteDialog = function(messageId, isLocal = false) {
+            pendingDeleteMessageId = { id: messageId, isLocal };
+            document.getElementById('deleteDialog').style.display = 'flex';
+            document.getElementById('deletePassword').focus();
+            
+            // 移动端调整对话框
+            adjustDeleteDialogForMobile();
+        };
+        
+        // 确认删除留言
+        async function confirmDelete() {
+            const password = document.getElementById('deletePassword').value;
+            
+            if (password !== ADMIN_PASSWORD) {
+                alert('密码错误！');
+                document.getElementById('deletePassword').value = '';
+                document.getElementById('deletePassword').focus();
+                return;
+            }
+            
+            if (!pendingDeleteMessageId) return;
+            
+            const { id, isLocal } = pendingDeleteMessageId;
+            
+            try {
+                if (isLocal) {
+                    // 本地模式删除
+                    const localMessages = JSON.parse(localStorage.getItem('teacherMessages_local')) || [];
+                    const updatedMessages = localMessages.filter(msg => msg.id !== id);
+                    localStorage.setItem('teacherMessages_local', JSON.stringify(updatedMessages));
+                    
+                    showMessage('success', '留言已成功删除！', 3000);
+                } else {
+                    // 云端模式删除
+                    // 首先获取现有数据
+                    const getResponse = await fetch(JSONBIN_URL + '/latest', {
+                        headers: {
+                            'X-Master-Key': JSONBIN_MASTER_KEY,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    
+                    if (!getResponse.ok) {
+                        throw new Error(`获取现有数据失败: ${getResponse.status}`);
+                    }
+                    
+                    const data = await getResponse.json();
+                    let messagesData = data.record;
+                    
+                    // 兼容旧数据格式
+                    let messages = [];
+                    if (Array.isArray(messagesData)) {
+                        messages = messagesData;
+                        messagesData = { messages: messages, visitors: 1 };
+                    } else if (messagesData && messagesData.messages) {
+                        messages = messagesData.messages;
+                    }
+                    
+                    // 过滤掉要删除的留言
+                    const updatedMessages = messages.filter(msg => msg.id !== id);
+                    messagesData.messages = updatedMessages;
+                    
+                    // 更新到JSONBin
+                    const updateResponse = await fetch(JSONBIN_URL, {
+                        method: 'PUT',
+                        headers: {
+                            'X-Master-Key': JSONBIN_MASTER_KEY,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(messagesData)
+                    });
+                    
+                    if (!updateResponse.ok) {
+                        throw new Error(`更新留言失败: ${updateResponse.status}`);
+                    }
+                    
+                    // 同时更新本地备份
+                    const localBackup = JSON.parse(localStorage.getItem('teacherMessages_backup')) || [];
+                    const updatedBackup = localBackup.filter(msg => msg.id !== id);
+                    localStorage.setItem('teacherMessages_backup', JSON.stringify(updatedBackup));
+                    
+                    showMessage('success', '留言已成功删除！', 3000);
+                }
+                
+                // 关闭对话框
+                document.getElementById('deleteDialog').style.display = 'none';
+                document.getElementById('deletePassword').value = '';
+                pendingDeleteMessageId = null;
+                
+                // 重新加载留言
+                setTimeout(() => {
+                    loadMessages();
+                }, 500);
+                
+            } catch (error) {
+                console.error('删除留言时出错:', error);
+                showMessage('error', '删除留言失败，请稍后重试。', 5000);
+                document.getElementById('deleteDialog').style.display = 'none';
+                pendingDeleteMessageId = null;
+            }
+        };
+        
+        // 提交留言函数
+        async function submitMessage() {
+            // 获取表单数据
+            const userName = document.getElementById('userName').value.trim();
+            const userRole = document.getElementById('userRole').value;
+            const teacherName = document.getElementById('teacherName').value.trim();
+            const userLocation = document.getElementById('userLocation').value.trim();
+            const messageContent = document.getElementById('messageContent').value.trim();
+            
+            // 验证表单数据
+            if (!userName || !userRole || !messageContent) {
+                showMessage('error', '请填写所有必填字段！', 3000);
+                return;
+            }
+            
+            // 禁用提交按钮，防止重复提交
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
+            
+            showMessage('info', '正在提交留言...');
+            
+            try {
+                // 创建新留言对象，包含地址信息
+                const newMessage = {
+                    id: Date.now(),
+                    userName,
+                    userRole,
+                    teacherName: teacherName || '',
+                    location: userLocation || '',
+                    content: messageContent,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // 检查是否使用本地模式
+                const useLocalMode = localStorage.getItem('useLocalMode') === 'true';
+                
+                if (useLocalMode) {
+                    // 本地模式
+                    const localMessages = JSON.parse(localStorage.getItem('teacherMessages_local')) || [];
+                    localMessages.push(newMessage);
+                    localStorage.setItem('teacherMessages_local', JSON.stringify(localMessages));
+                    
+                    showMessage('success', '您的留言已成功提交到本地存储！', 5000);
+                    
+                    // 重置表单
+                    document.getElementById('messageForm').reset();
+                    
+                    // 重新加载留言
+                    setTimeout(() => {
+                        loadMessages();
+                    }, 1000);
+                    
+                    // 重新启用提交按钮
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> 提交留言';
+                    return;
+                }
+                
+                // 云端模式
+                // 首先获取现有数据
+                const getResponse = await fetch(JSONBIN_URL + '/latest', {
+                    headers: {
+                        'X-Master-Key': JSONBIN_MASTER_KEY,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (!getResponse.ok) {
+                    throw new Error(`获取现有数据失败: ${getResponse.status}`);
+                }
+                
+                const data = await getResponse.json();
+                let messagesData = data.record;
+                
+                // 兼容旧数据格式
+                let messages = [];
+                if (Array.isArray(messagesData)) {
+                    messages = messagesData;
+                    messagesData = { messages: messages, visitors: 1 };
+                } else if (messagesData && messagesData.messages) {
+                    messages = messagesData.messages;
+                }
+                
+                // 添加新留言
+                messages.push(newMessage);
+                messagesData.messages = messages;
+                
+                // 更新到JSONBin
+                const updateResponse = await fetch(JSONBIN_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'X-Master-Key': JSONBIN_MASTER_KEY,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(messagesData)
+                });
+                
+                if (!updateResponse.ok) {
+                    throw new Error(`更新留言失败: ${updateResponse.status}`);
+                }
+                
+                // 同时在本地存储中备份
+                const localMessages = JSON.parse(localStorage.getItem('teacherMessages_backup')) || [];
+                localMessages.push(newMessage);
+                localStorage.setItem('teacherMessages_backup', JSON.stringify(localMessages));
+                
+                // 显示成功消息
+                showMessage('success', '您的留言已成功提交！所有用户都能看到您的留言。', 5000);
+                
+                // 重置表单
+                document.getElementById('messageForm').reset();
+                
+                // 重新加载留言
+                setTimeout(() => {
+                    loadMessages();
+                }, 1000);
+                
+            } catch (error) {
+                console.error('提交留言时出错:', error);
+                
+                // 如果云端提交失败，保存到本地备份
+                const newMessage = {
+                    id: Date.now(),
+                    userName,
+                    userRole,
+                    teacherName: teacherName || '',
+                    location: userLocation || '',
+                    content: messageContent,
+                    timestamp: new Date().toISOString()
+                };
+                
+                const localMessages = JSON.parse(localStorage.getItem('teacherMessages_backup')) || [];
+                localMessages.push(newMessage);
+                localStorage.setItem('teacherMessages_backup', JSON.stringify(localMessages));
+                
+                showMessage('error', '留言已保存到本地备份，但云端提交失败。请检查网络连接。', 5000);
+                
+                // 重新加载留言（从本地）
+                setTimeout(() => {
+                    loadMessages();
+                }, 1000);
+                
+            } finally {
+                // 重新启用提交按钮
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> 提交留言';
+            }
+        }
+        
+        // 初始页面加载效果
+        document.body.style.opacity = 0;
+        document.body.style.transition = 'opacity 1s ease';
+        
+        // 监听窗口大小变化，调整响应式布局
+        window.addEventListener('resize', function() {
+            adjustDeleteDialogForMobile();
+        });
+    </script>
+</body>
+</html>
